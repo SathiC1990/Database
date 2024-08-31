@@ -26,4 +26,4 @@ select s.name, count(t.id) as task_count from status s
 --Get the names of all statuses, sorted by the status with most tasks first
 .select s.name, count(t.id) as task_count from status s
    left join task t on s.id=t.status_id
-   group by s.name order by task_count desc;
+   group by s.name order by task_count desc; 
