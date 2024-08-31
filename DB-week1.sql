@@ -7,15 +7,15 @@ select t.* from task t
    left join status s on s.id=t.status_id
    where s.name='Done';
 --Find all the tasks that are not marked as done
-select t.* from task t
+   select t.* from task t
    left join status s on s.id=t.status_id
-   where s.name !='Done';
+   where s.name !='Done' or t.status_id is null;
 --Get all the tasks, sorted with the most recently created first
 select * from task order by  created desc; 
 --Get the single most recently created task
 select * from task order by  created desc limit 1;
 --Get the title and due date of all tasks where the title or description contains database
-select title, due_date from task where title like '%database%'; 
+select title, due_date from task where title like '%database%' or description like '%database%';
 --Get the title and status (as text) of all tasks
 select t.title, s.name from task t                                     
    left join status s on s.id=t.status_id;
