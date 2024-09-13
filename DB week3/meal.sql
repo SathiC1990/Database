@@ -118,3 +118,40 @@ UPDATE Meal
 	
 	--Delete a review with any id, fx 1
 	delete from Review where id= 3;
+
+    	--Get meals that has a price smaller than a specific price fx 90
+	select* from Meal where price <80;
+	
+	--Get meals that still has available reservations
+	SELECT Meal.*, (Meal.max_reservations - IFNULL(SUM(Reservation.number_of_guests), 0)) AS available_reservations
+    -> FROM Meal
+    -> LEFT JOIN Reservation ON Meal.id = Reservation.meal_id
+    -> GROUP BY Meal.id
+    -> HAVING available_reservations > 0;
+	
+	
+	--Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
+	select * from Meal where title like 'Rød grød med%';
+	
+	
+	--Get meals that has been created between two dates
+	select * from Meal where created_date between '2024-09-05' and '2024-09-30';
+	
+	--Get only specific number of meals fx return only 5 meals
+	select * from Meal limit 2;
+	
+	
+	
+	--Get the meals that have good reviews
+	select * from Review where  stars= 5;  
+	
+	
+	
+	
+	--
+	select * from Reservation where meal_id =2  order by created_date desc; 
+	Get reservations for a specific meal sorted by created_date
+	
+	
+	--select Meal.*, AVG(Review.stars) AS average_stars from Meal left join Review on Meal.id=Review.meal_id group by Meal.id order by average_stars desc; 
+	Get reservations for a specific meal sorted by created_date
