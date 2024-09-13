@@ -101,3 +101,20 @@ UPDATE Meal
 	
 	--delete a reservarion
 	delete from Reservation where id=2;
+
+    --Add a new review
+	 insert into Review (title, description, meal_id, stars, created_date)
+    -> value ('Delicious Meal', 'The meal was outstanding and the service was excellent!', 2, 5, '2024-09-11');
+	
+	--Get a review with any id, fx 1
+	select *from Review where id=2;
+	
+	--
+	 UPDATE Review     
+    -> SET title = 'Amazing Experience',
+    ->     description = 'The meal was beyond expectations! Would recommend to anyone.',
+    ->     stars = 5
+    -> WHERE id = 1;
+	
+	--Delete a review with any id, fx 1
+	delete from Review where id= 3;
